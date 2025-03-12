@@ -11,3 +11,7 @@
   --color-golden: var(--golden);
   --color-dark-golden: var(--dark-golden);
 }
+
+@theme {
+  --font-ows: var(--font-oswald);
+}

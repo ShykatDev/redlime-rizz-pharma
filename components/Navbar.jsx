@@ -1,15 +1,20 @@
+'use client'
+
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { navbarItems } from "../constants/options"
 
 const Navbar = () => {
+  const pathName = usePathname();
+
   return (
     <div className="flex justify-between items-start py-[30px]">
       <Image src="/assets/logo.png" alt="rizz-logo" width={110} height={140} />
       <div className="h-full flex flex-col justify-between">
         <div className="flex gap-14">
           {navbarItems.map((item, index) => (
-            <div key={index} className="flex items-center gap-2">
+            <div key={index} className={`flex items-center pb-1 gap-2 ${pathName === item.href ? 'border-b-2 border-text' : ''}`}>
               <Link href={item.href} className="text-base text-text">{item.title}</Link>
               {item.icon && (
                 <Image src="/assets/down_arrow.svg" alt="arrow-down" width={24} height={24} />

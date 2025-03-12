@@ -1,8 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Oswald } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
 });
 
@@ -20,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}
+        className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} antialiased bg-gray-900`}
       >
         <div className="px-32">{children}</div>
       </body>
