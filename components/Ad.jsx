@@ -2,10 +2,10 @@ import Image from "next/image"
 
 const Ad = () => {
     return (
-        <div className='my-[160px] h-[812px] relative'>
-            <Image alt="ad" src="/assets/ad.svg" width={1920} height={812} className="absolute z-0" />
+        <div className='my-[160px] h-auto relative block'>
+            <Image alt="ad" src="/assets/ad.svg" width={1920} height={812} className="z-0" />
 
-            <div className="relative z-10 grid grid-cols-2 py-24 px-40">
+            <div className="absolute w-full top-24 z-10 grid grid-cols-2 px-40">
                 <div>
                     <h2 className="text-light font-impact text-[58px]  leading-none">100% Online,<br/>100% Convenient</h2>
                 </div>
