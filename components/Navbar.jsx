@@ -9,7 +9,7 @@ const Navbar = () => {
   const pathName = usePathname();
 
   return (
-    <div className="flex justify-between items-start py-[30px]">
+    <div className="flex justify-between items-start py-[30px] px-40">
       <Image src="/assets/logo.svg" alt="rizz-logo" width={110} height={140} />
 
       <div className="h-full flex flex-col justify-between">

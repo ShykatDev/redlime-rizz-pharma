@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${impact.variable} ${neue.variable} antialiased`}
       >
-        <div className="px-32">{children}</div>
+        <div className="">{children}</div>
       </body>
     </html>
   );
