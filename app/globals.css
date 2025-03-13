@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --text: #faf8f2;
+  --light: #faf8f2;
   --golden: #e1c06e;
   --dark-golden: #c1842d;
+  --dark: #22242d;
 }
 
 @theme inline {
-  --color-text: var(--text);
+  --color-light: var(--light);
   --color-golden: var(--golden);
   --color-dark-golden: var(--dark-golden);
+  --color-dark: var(--dark);
 }
 
 @theme {
-  --font-ows: var(--font-oswald);
+  --font-impact: var(--font-impact);
+  --font-neue: var(--font-neue);
+}
+
+body {
+  background-image: url("../public/assets/bg.svg");
+  background-position: initial;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--font-neue);
 }
