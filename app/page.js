@@ -1,6 +1,7 @@
 import Category from "@/components/Category";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Products from "@/components/Products";
 import Support from "@/components/Support";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <Category/>
       <Support/>
+      <Products/>
     </>
   );
 }
