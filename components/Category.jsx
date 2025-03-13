@@ -1,5 +1,17 @@
+'use client'
+
+import APIKit from "@/helpers/APIKit";
+import { useQuery } from "@tanstack/react-query";
 
 const Category = () => {
+    const { data} = useQuery({
+        queryKey: ["categories"],
+        queryFn: APIKit.category.getCategories
+      })
+
+      console.log(data);
+      
+
     return (
         <div className="mt-[72px] px-40">
             <h2 className="font-impact text-center text-light text-[48px]">Shop by <span className="text-golden">Category</span></h2>
