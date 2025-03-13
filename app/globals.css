@@ -26,3 +26,24 @@ body {
   background-size: cover;
   font-family: var(--font-neue);
 }
+
+.box {
+  position: relative;
+  border-radius: 12px;
+  background: transparent; /* Fully transparent background */
+  padding: 10px;
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px; /* Border width */
+  background: linear-gradient(to top, #52566cb2, #ffffff1a, #52566cb2);
+  -webkit-mask: linear-gradient(white, white) content-box,
+    linear-gradient(white, white);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
