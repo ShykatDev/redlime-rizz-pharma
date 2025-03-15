@@ -1,15 +1,68 @@
-import TestimonialCard from "./common/TestimonialCard"
+'use client'
+
+import Slider from "react-slick";
+import TestimonialCard from "./common/TestimonialCard";
 
 const Testimonial = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+    customPaging: (i) => (
+      <div className="mt-[50px]">
+        <div className="w-[14px] h-[14px] rounded-full bg-gray-700 transition-all duration-300 slick-dot"></div>
+      </div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+    ],
+  };
+  
+
   return (
     <div className="">
-        <h2 className="font-impact text-center text-light text-[48px]">Hear What <span className="text-golden">Rizz</span> Patients Have To Say</h2>
+      <h2 className="font-impact text-center text-light text-[48px]">Hear What <span className="text-golden">Rizz</span> Patients Have To Say</h2>
 
-        <div className="flex justify-center items-center gap-8 mt-[45px]">
-            <TestimonialCard/>
-            <TestimonialCard/>
-            <TestimonialCard/>
-        </div>
+      <div className="slider-container mt-[45px]">
+        <Slider {...settings}>
+          <TestimonialCard />
+          <TestimonialCard />
+          <TestimonialCard />
+          <TestimonialCard />
+          <TestimonialCard />
+          <TestimonialCard />
+        </Slider>
+      </div>
     </div>
   )
 }

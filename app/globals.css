@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 :root {
   --light: #faf8f2;
@@ -46,4 +48,18 @@ body {
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* Carousel Styles */
+
+.slick-dots li .slick-dot {
+  background-color: #3b3b41;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active .slick-dot {
+  background-color: #b9b8b8; /* Golden color */
+  opacity: 1;
+  transform: scale(1.15);
+  transition: all 0.3s ease-in-out;
 }
