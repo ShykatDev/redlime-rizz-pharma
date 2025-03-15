@@ -3,16 +3,29 @@
 import APIKit from "@/helpers/APIKit"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
 import ProductCard from "./common/ProductCard"
 
 const Products = () => {
   const [skip, setSkip] = useState(0)
+  const [category, setCategory] = useState("")
+  const scrollRef = useRef(null)
+  const router = useRouter()
+  const pathName = usePathname()
 
   const { data, refetch, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => APIKit.prodcuts.getProducts(skip),
+    queryKey: ["products", category],
+    queryFn: () => APIKit.prodcuts.getProducts(category, skip),
+    placeholderData: (previousData) => previousData
   })
+
+  const { data: categories, isLoading: isCategoryLoading } = useQuery({
+    queryKey: ["categories"],
+    queryFn: APIKit.category.getCategories
+  })
+
+  // console.log(data.slice(0, 6));
 
   const nextProducts = () => {
     if (skip < data?.total) {
@@ -28,11 +41,32 @@ const Products = () => {
     }
   }
 
+  const handleScrollToRight = () => {
+    // const container = document.getElementById("category-scroll");
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
+    }
+  };
+
+  const handleFilter = (e) => {
+    const target = e.target.textContent.toLowerCase();
+
+    setCategory(target)
+    router.push(`${pathName}?category=${target}`, { scroll: false })
+
+    refetch()
+  }
+
   useEffect(() => {
     refetch()
   }, [skip, refetch]) // Refetch whenever skip changes
 
-  if (isLoading) {
+  useEffect(()=> {
+    setSkip(0)
+    refetch()
+  }, [category])
+
+  if (isLoading || isCategoryLoading) {
     return "Loading..."
   }
 
@@ -43,32 +77,43 @@ const Products = () => {
       <h2 className="font-impact text-center text-light text-[48px]">Solutions for Your <span className="text-golden">Unique</span> Health Goals</h2>
 
       {/* Filter Buttons */}
-      <div className="mt-[45px] mb-[66px] flex justify-between items-center">
-        <button className="px-8 py-5 bg-golden rounded-full text-xl">All</button>
-        <button className="px-8 py-5 border border-light text-light rounded-full text-xl">Best Selling Products</button>
-        <button className="px-8 py-5 border border-light text-light rounded-full text-xl">Weight Loss</button>
-        <button className="px-8 py-5 border border-light text-light rounded-full text-xl">Beauty And Hair Loss</button>
-        <button className="px-8 py-5 border border-light text-light rounded-full text-xl">Testosterone/HRT</button>
-        <button className="px-8 py-5 border border-light text-light rounded-full text-xl">Sexual Health</button>
-        <button className="px-8 py-6 border border-light text-light rounded-full text-xl">
+      <div className="mt-[45px] mb-[66px] flex justify-between items-center gap-6">
+
+        <div ref={scrollRef} className="flex gap-3 items-center w-full overflow-auto hide-scrollbar">
+          <button className={`px-8 text-nowrap capitalize py-5 border border-light rounded-full text-xl cursor-pointer hover:bg-golden hover:text-black ${category === "" ? "bg-golden text-black" : "text-light"}`} onClick={() => {
+            setCategory("")
+            router.push(pathName, { scroll: false })
+          }}>All</button>
+
+          {categories?.slice(0, 10)?.map((item, i) => (
+            <button key={i} className={`px-8 text-nowrap capitalize py-5 border border-light rounded-full text-xl cursor-pointer hover:bg-golden hover:text-black ${category === item ? "bg-golden text-black" : "text-light"}`} onClick={handleFilter}>{item}</button>
+          ))}
+        </div>
+
+        <button className="px-8 py-6 border border-light text-light rounded-full text-xl shrink-0 cursor-pointer hover:bg-golden/30 duration-300" onClick={handleScrollToRight}>
           <Image src={"/assets/right_arrow.svg"} width={26} height={26} alt="arrow-right" />
         </button>
       </div>
 
+
       {/* Products */}
-      <div className="grid grid-cols-4 gap-[30px]">
-        {
-          data?.products?.map((product, i) => (
-            <ProductCard key={i} product={product} index={i} />
-          ))
-        }
-      </div>
+      {
+        data?.products?.length > 0 ? (
+          <div className="grid grid-cols-4 gap-8">
+            {data?.products?.map((product, i) => (
+              <ProductCard key={i} product={product} />
+            ))}
+          </div>
+        ) : (
+          <h2 className="text-center text-light text-[24px]">No products found</h2>
+        )
+      }
 
       <div className="mt-[50px] flex justify-center items-center gap-8">
-        <button className="size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300 disabled:opacity-50 disabled:cursor-not-allowed" onClick={prevProducts} disabled={skip <= 0}>
+        <button className="size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300 disabled:opacity-50 disabled:cursor-not-allowed" onClick={prevProducts}>
           <Image src={`/assets/arrow.svg`} width={24} height={24} alt="arrow-left" className="rotate-180" />
         </button>
-        <button className="size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300" onClick={nextProducts}>
+        <button className="size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300 disabled:opacity-50" onClick={nextProducts}>
           <Image src={`/assets/arrow.svg`} width={24} height={24} alt="arrow-r8" />
         </button>
       </div>
