@@ -74,7 +74,7 @@ const Products = () => {
 
 
   return (
-    <div className='px-10 md:px-20 lg:px-40'>
+    <div className='px-10 md:px-20 lg:px-40 xl:px-60'>
       <h2 className="font-impact text-center text-light text-3xl lg:text-[48px]">Solutions for Your <span className="text-golden">Unique</span> Health Goals</h2>
 
       {/* Filter Buttons */}

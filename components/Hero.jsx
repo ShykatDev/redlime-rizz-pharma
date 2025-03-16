@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const Hero = () => {
     return (
-        <div className="mt-12 px-10 pt-[86.6px] lg:pt-0 md:px-20 lg:px-40">
+        <div className="mt-12 px-10 pt-[86.6px] lg:pt-0 md:px-20 lg:px-40 xl:px-60">
             <h2 className="text-5xl md:text-6xl lg:text-[80px] font-impact font-bold text-white capitalize leading-[120%] tracking-wide">
                 Prescription<br />
                 treatments for<br />

@@ -5,7 +5,7 @@ const Ad = () => {
         <div className='my-[160px] min-h-[500px] lg:h-[812px] relative block bg-red-300'>
             <Image alt="ad" src="/assets/ad.svg" fill className="z-0 object-cover" />
 
-            <div className="absolute w-full top-10 lg:top-24 z-10 grid md:grid-cols-2 gap-10 px-10 md:px-20 lg:px-40">
+            <div className="absolute w-full top-10 lg:top-24 z-10 grid md:grid-cols-2 gap-10 px-10 md:px-20 lg:px-40 xl:px-60">
                 <div>
                     <h2 className="text-light font-impact text-4xl lg:text-[58px] leading-none">100% Online,<br/>100% Convenient</h2>
                 </div>

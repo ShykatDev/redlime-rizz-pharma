@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const Footer = () => {
     return (
-        <div className="mt-[210px] px-10 md:px-20 lg:px-40 pt-10 lg:pt-20 bg-gradient-to-b from-[#3D55CCB2] to-[#1F1F1F1A] backdrop-blur-3xl">
+        <div className="mt-[210px] px-10 md:px-20 lg:px-40 xl:px-60 pt-10 lg:pt-20 bg-gradient-to-b from-[#3D55CCB2] to-[#1F1F1F1A] backdrop-blur-3xl">
             {/* Top Content */}
             <div className="grid lg:grid-cols-2 space-y-10 items-center gap-10">
                 <div className="w-full xl:w-[413px] p-[2px] rounded-xl box">

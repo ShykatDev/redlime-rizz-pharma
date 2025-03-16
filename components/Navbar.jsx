@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="hidden lg:flex justify-between items-start py-[30px] lg:px-40">
+      <div className="hidden lg:flex justify-between items-start py-[30px] lg:px-40 xl:px-60">
         <Image src="/assets/logo.svg" alt="rizz-logo" width={110} height={140} className="hidden lg:block" />
 
 
