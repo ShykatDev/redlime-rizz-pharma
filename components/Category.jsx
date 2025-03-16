@@ -14,10 +14,10 @@ const Category = () => {
 
 
     return (
-        <div className="mt-[72px] px-40">
-            <h2 className="font-impact text-center text-light text-[48px]">Shop by <span className="text-golden">Category</span></h2>
+        <div className="mt-[72px] px-10 md:px-20 lg:px-40">
+            <h2 className="font-impact text-center text-light text-3xl lg:text-[48px]">Shop by <span className="text-golden">Category</span></h2>
 
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]">
+            <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-[30px]">
                 <div className="flex flex-col justify-start gap-[30px]">
                     <div className="w-full h-[550px] relative rounded-3xl overflow-hidden">
                         <Image src="/assets/c1.svg" fill alt="c1" className="w-full h-full object-cover" />

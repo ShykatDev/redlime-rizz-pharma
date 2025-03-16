@@ -9,7 +9,9 @@ const Testimonial = () => {
     infinite: true,
     autoplay: true,
     speed: 500,
-    slidesToShow: 4,
+    // centerMode: true,
+    // centerPadding: "150px",
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
     customPaging: (i) => (
@@ -51,7 +53,7 @@ const Testimonial = () => {
 
   return (
     <div className="">
-      <h2 className="font-impact text-center text-light text-[48px]">Hear What <span className="text-golden">Rizz</span> Patients Have To Say</h2>
+      <h2 className="font-impact text-center text-light text-3xl lg:text-[48px]">Hear What <span className="text-golden">Rizz</span> Patients Have To Say</h2>
 
       <div className="slider-container mt-[45px]">
         <Slider {...settings}>

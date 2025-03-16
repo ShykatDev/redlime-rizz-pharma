@@ -16,7 +16,7 @@ const ProductCard = ({ product, index }) => {
             </div>
             <div className="pt-6 px-4 flex justify-between items-center gap-6">
                 <div className="w-[250px] h-[180px] relative">
-                    <Image src={thumbnail} fill alt={`product`} />
+                    <Image src={thumbnail} fill alt={`product`} className="object-cover"/>
                 </div>
                 <p className="text-transparent bg-clip-text text-lg font-bold leading-[120%] bg-linear-to-b from-[#C1842D] to-[#ECC974] inline-block">{title}</p>
             </div>

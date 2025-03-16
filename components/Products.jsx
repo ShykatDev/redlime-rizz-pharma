@@ -52,6 +52,7 @@ const Products = () => {
     const target = e.target.textContent.toLowerCase();
 
     setCategory(target)
+    setSkip(0)
     router.push(`${pathName}?category=${target}`, { scroll: false })
 
     refetch()
@@ -73,24 +74,24 @@ const Products = () => {
 
 
   return (
-    <div className='px-40'>
-      <h2 className="font-impact text-center text-light text-[48px]">Solutions for Your <span className="text-golden">Unique</span> Health Goals</h2>
+    <div className='px-10 md:px-20 lg:px-40'>
+      <h2 className="font-impact text-center text-light text-3xl lg:text-[48px]">Solutions for Your <span className="text-golden">Unique</span> Health Goals</h2>
 
       {/* Filter Buttons */}
       <div className="mt-[45px] mb-[66px] flex justify-between items-center gap-6">
 
         <div ref={scrollRef} className="flex gap-3 items-center w-full overflow-auto hide-scrollbar">
-          <button className={`px-8 text-nowrap capitalize py-5 border border-light rounded-full text-xl cursor-pointer hover:bg-golden hover:text-black ${category === "" ? "bg-golden text-black" : "text-light"}`} onClick={() => {
+          <button className={`px-5 py-3 lg:px-8 text-nowrap capitalize lg:py-5 border border-light rounded-full text-xl cursor-pointer hover:bg-golden hover:text-black ${category === "" ? "bg-golden text-black" : "text-light"}`} onClick={() => {
             setCategory("")
             router.push(pathName, { scroll: false })
           }}>All</button>
 
-          {categories?.slice(0, 10)?.map((item, i) => (
-            <button key={i} className={`px-8 text-nowrap capitalize py-5 border border-light rounded-full text-xl cursor-pointer hover:bg-golden hover:text-black ${category === item ? "bg-golden text-black" : "text-light"}`} onClick={handleFilter}>{item}</button>
+          {categories?.map((item, i) => (
+            <button key={i} className={`px-5 py-3 lg:px-8 text-nowrap capitalize lg:py-5 border border-light rounded-full text-xl cursor-pointer hover:bg-golden hover:text-black ${category === item ? "bg-golden text-black" : "text-light"}`} onClick={handleFilter}>{item}</button>
           ))}
         </div>
 
-        <button className="px-8 py-6 border border-light text-light rounded-full text-xl shrink-0 cursor-pointer hover:bg-golden/30 duration-300" onClick={handleScrollToRight}>
+        <button className="px-5 py-4 md:px-8 md:py-6 border border-light text-light rounded-full text-xl shrink-0 cursor-pointer hover:bg-golden/30 duration-300" onClick={handleScrollToRight}>
           <Image src={"/assets/right_arrow.svg"} width={26} height={26} alt="arrow-right" />
         </button>
       </div>
@@ -99,9 +100,9 @@ const Products = () => {
       {/* Products */}
       {
         data?.products?.length > 0 ? (
-          <div className="grid grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {data?.products?.map((product, i) => (
-              <ProductCard key={i} product={product} />
+              <ProductCard key={i} product={product} index={i}/>
             ))}
           </div>
         ) : (
@@ -109,11 +110,11 @@ const Products = () => {
         )
       }
 
-      <div className="mt-[50px] flex justify-center items-center gap-8">
-        <button className="size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300 disabled:opacity-50 disabled:cursor-not-allowed" onClick={prevProducts}>
+      <div className="mt-[50px] flex justify-center items-center gap-4 lg:gap-8">
+        <button className="size-[50px] lg:size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300 disabled:opacity-50 disabled:cursor-not-allowed" onClick={prevProducts}>
           <Image src={`/assets/arrow.svg`} width={24} height={24} alt="arrow-left" className="rotate-180" />
         </button>
-        <button className="size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300 disabled:opacity-50" onClick={nextProducts}>
+        <button className="size-[50px] lg:size-[60px] flex justify-center items-center rounded-full bg-golden cursor-pointer hover:bg-[#C1842D] duration-300 disabled:opacity-50" onClick={nextProducts}>
           <Image src={`/assets/arrow.svg`} width={24} height={24} alt="arrow-r8" />
         </button>
       </div>
