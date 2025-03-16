@@ -30,7 +30,7 @@ const Category = () => {
                         <p className="absolute top-6 left-6 text-white text-[36px] z-20">Testosterone
                             <br />HRT</p>
                     </div>
-                    <div className="w-full h-[450px] relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#97B5FB] to-[#F27070]">
+                    <div className="w-full h-[450px] relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#97B5FB] to-[#F27070] xl:hidden">
                         <Image src="/assets/category/c3_vector.svg" width={300} height={300} alt="c1-vector" className="absolute bottom-0 right-0 z-0" />
                         <Image src="/assets/category/c3.svg" width={300} height={300} alt="c1-vector" className="absolute bottom-0 right-0 z-10" />
                         <p className="absolute top-6 left-6 text-white text-[36px] z-20">Brain<br />Health</p>
@@ -48,7 +48,7 @@ const Category = () => {
                         <Image src="/assets/category/c5.svg" width={300} height={300} alt="c1-vector" className="absolute bottom-0 right-0 z-10" />
                         <p className="absolute top-6 left-6 text-white text-[36px] z-20">Athletic<br />Performance</p>
                     </div>
-                    <div className="w-full h-[376px] relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#70CBF2] to-[#97B0FB]">
+                    <div className="w-full h-[376px] relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#70CBF2] to-[#97B0FB] xl:hidden">
                         <Image src="/assets/category/c6_vector.svg" width={300} height={300} alt="c1-vector" className="absolute bottom-0 right-0 z-0" />
                         <Image src="/assets/category/c6.svg" width={300} height={300} alt="c1-vector" className="absolute bottom-0 right-0 z-10" />
                         <p className="absolute top-6 left-6 text-white text-[36px] z-20">Beauty and
